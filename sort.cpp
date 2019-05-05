@@ -103,28 +103,8 @@ void mergeSort(int* array, int left, int right) {
         merge(array, left, mid, right);
     }
 }
-/* This function takes last element as pivot, places
-   the pivot element at its correct position in sorted
-    array, and places all smaller (smaller than pivot)
-   to left of pivot and all greater elements to right
-   of pivot */
 int partition(int* array, int left, int right) {
-    // int pivot = right;
-    // int p_val = array[pivot];
-    // int left_cursor = left;
-    // int right_cursor = right;
-    // while (left_cursor < right_cursor) {
-    //     while (array[left_cursor] < p_val) {
-    //         left_cursor++;
-    //     }
-    //     while (array[right_cursor] >= p_val) {
-    //         right_cursor--;
-    //     }
-    //     if (left_cursor < right_cursor) {
-    //         swap(array[left_cursor], array[right_cursor]);
-    //     }
-    // }
-    // swap(array[pivot], array[left_cursor]);
+    //select left as pivot
     int pivot = left;
     int index = pivot + 1;
     for (int i = index; i <= right; i++) {
@@ -134,6 +114,16 @@ int partition(int* array, int left, int right) {
         }
     }
     swap(array[pivot], array[index-1]);
+    //select right as pivot
+    /*int pivot = right;
+    int index = pivot - 1;
+    for (int i = index; i >= 0; i--) {
+        if (array[i] > array[pivot]) {
+            swap(array[i], array[index]);
+            index--;
+        }
+    }
+    swap(array[pivot], array[index+1]);*/
     return index-1;
 }
 void quickSort(int* array, int left, int right) {
@@ -149,18 +139,18 @@ void printArray(int* array, int length) {
     }
     printf("\n");
 }
-
 int main(){
-    int array[7] = {5,1,3,6,9,8,4};
+    int array[] = {3,-1,9,8,10,100,20,30,-13,15,16};
+    int length = sizeof(array) / sizeof(int);
     printf("before sort: ");
-    printArray(array, 7);
-    // bubbleSort(array, 7);
-    // selectSort(array, 7);
-    // insertionSort(array, 7);
-    // shellSort(array, 7);
-    // mergeSort(array, 0, 6);
-    quickSort(array, 0, 6);
+    printArray(array, length);
+    // bubbleSort(array, length);
+    // selectSort(array, length);
+    // insertionSort(array, length);
+    // shellSort(array, length);
+    // mergeSort(array, 0, length);
+    quickSort(array, 0, length - 1);
     printf("after sort: ");
-    printArray(array, 7);
+    printArray(array, length);
     return 0;
 }
