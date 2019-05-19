@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+//source: http://www.kaushikbaruah.com/posts/data-structure-in-c-hashmap/
 //1) hash map node element include `key` and `value`
 //2) hash map table store all hash map node
 //3) three function in hash: createTable(), insert(), lookup(), hashCode()
