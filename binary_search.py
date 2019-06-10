@@ -1,5 +1,3 @@
-
-
 #二分查找算法递归和非递归实现
 #时间复杂度：最好(1), 最坏o(logn)
 
@@ -16,7 +14,6 @@ def binary_search(alist, item):
             end = mid - 1
         else:
             start = mid + 1
-
     return False
 
 def binary_search_recursize(alist, item):
@@ -27,26 +24,9 @@ def binary_search_recursize(alist, item):
     if alist[mid] == item:
         return True
     elif alist[mid] > item:
-        binary_search_recursize(alist[:mid], item)
+        return binary_search_recursize(alist[:mid], item)
     else:
-        binary_search_recursize(alist[mid:], item)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        return binary_search_recursize(alist[mid:], item)
+if __name__ == "__main__":
+    alist = [1,2,3,4,5,6]
+    print("Ture of False: %d" % binary_search_recurse(alist, 4))
