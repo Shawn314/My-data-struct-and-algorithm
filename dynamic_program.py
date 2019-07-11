@@ -16,7 +16,7 @@ def FibonacciLookup(n, lookup):
     if n <= 0:
         lookup[n] = 0
     if n == 1:
-        lookup[n] = 1
+        lookup[n] = 10
     if n not in lookup:
         lookup[n] = FibonacciLookup(n-1, lookup) + FibonacciLookup(n-2, lookup)
     return lookup[n]
@@ -28,10 +28,27 @@ def FinonacciTabulation(n):
     for i in range(2, n+1):
         arr[i] = arr[i-1] + arr[i-2]
     return arr[n]
-    
+
+'''
+找到无序数组中的最大差值（动态规划）
+'''
+def findMaxDiff(array):
+    if len(array) < 2:
+        return 0
+    min_val = min(array[0], array[1])
+    max_diff = array[1] - array[0]
+    for i, val in enumerate(array, 2):
+        if val - min_val > max_diff:
+            max_diff = val - min_val
+        if val < min_val:
+            min_val = val
+    return max_diff
+
+
 if __name__ == "__main__":
     # print("result is %d" % Fibonacci(100))
     # dictLookup = {}
     # print("result is %d" % FibonacciLookup(200, dictLookup))
-    print("result is %d" % FinonacciTabulation(200))
+    l = [1,3,4,5,0]
+    print(findMaxDiff(l))
 
